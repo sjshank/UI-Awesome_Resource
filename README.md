@@ -1,4 +1,4 @@
-# UI-Awesome_Resource
+# UI_Awesome_Resource
 List of awesome useful UI resource
 
 
