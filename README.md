@@ -26,3 +26,18 @@ List of awesome useful UI resource
 
 ## Top 30 Interview Questions for Ethereum & Smart Contracts
 https://www.blockchain-council.org/blockchain/top-30-interview-questions-for-ethereum-smart-contracts/?utm_source=Linkedin&utm_medium=Posts&utm_campaign=LinkedinMay-22#
+
+
+## GitHub repositories to follow if you are or want to become a Blockchain Developer -
+
+1. Solidity cheatsheet - https://lnkd.in/g23b9Vyh
+
+2. Blockchain Solidity course - https://lnkd.in/gj9f6UvP
+
+3. Highly detailed Roadmap for Defi/blockchain developer - https://lnkd.in/gbaDSPkU
+
+4. Best repo for understanding how popular AMMs like uniswap v2, v3, and curve work - https://lnkd.in/g_wmxTpm
+
+5. Gas optimization - https://lnkd.in/gv9VjEmF
+
+6. Create your own blockchain - https://lnkd.in/gf2cJ76E
