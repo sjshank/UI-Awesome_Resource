@@ -41,3 +41,18 @@ https://www.blockchain-council.org/blockchain/top-30-interview-questions-for-eth
 5. Gas optimization - https://lnkd.in/gv9VjEmF
 
 6. Create your own blockchain - https://lnkd.in/gf2cJ76E
+
+
+
+## Useful API's to practice
+
+▪️weather API
+▪️Sports API
+▪️Marvel API
+▪️Flights API
+▪️Finance API
+▪️Poke API
+▪️NASA API
+▪️Random Fact API
+▪️Space X API
+▪️Google Fonts API
