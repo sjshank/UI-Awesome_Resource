@@ -56,3 +56,18 @@ https://www.blockchain-council.org/blockchain/top-30-interview-questions-for-eth
 ▪️Random Fact API
 ▪️Space X API
 ▪️Google Fonts API
+
+
+
+Principal UI Developer / UI Architect - Key Responsibilities:
+
+1. Technical Leadership: Provide technical guidance and mentorship to a team of UI Engineers, fostering a culture of excellence, innovation, and continuous learning.
+2. Architecture and Design: Define and drive the architectural vision for our UI technologies, ensuring scalability, performance, and maintainability while adhering to industry best practices.
+3. Component Reuse: Establish a framework for efficient component development and reuse, enhancing development speed with micro-front ends which can be delivered independently but work consistency across our product portals.
+4. User Experience (UX) Excellence: Collaborate with UX designers and product managers to create cohesive and intuitive user experiences, ensuring seamless navigation and interaction across various product offerings.
+5. Code Quality and Reviews: Set high coding standards and conduct regular code reviews to ensure the quality, security, and robustness of UI codebase.
+6. Technology Evaluation: Keep up to date with emerging UI technologies, tools, and trends, and evaluate their potential to enhance our products and development processes.
+7. Collaboration: Work closely with product management, backend developers, fellow architects and other stakeholders to align UI technology strategies with overall product goals and business objectives.
+8. Performance Optimization: Identify and address performance bottlenecks in UI code to ensure responsive and efficient user interfaces.
+9. Documentation: Create and maintain comprehensive technical documentation, including architectural diagrams, design patterns, and coding standards.
+10. Innovation: Champion innovation within the UI development domain, seeking opportunities to introduce new technologies and methodologies that elevate our products and development practices.
