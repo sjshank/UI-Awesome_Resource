@@ -22,6 +22,7 @@ List of awesome useful UI resource
 * https://stocksnap.io/
 * https://www.freeimages.com/
 * https://randomuser.me/photos
+* https://www.imagin.studio/car-image-api
 
 
 ## Top 30 Interview Questions for Ethereum & Smart Contracts
