@@ -1,0 +1,35 @@
+Web Components
+
+Set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps.
+Web Components are a collection of building blocks, consisting of:
+
+Custom Elements
+Shadow DOM
+HTML Imports
+HTML Templates
+
+
+Custom Elements
+Custom Elements give us the capability to create new HTML tags. You can do that by crafting your own elements, enhance existing HTML tags or extend components that other developers have authored.
+
+Shadow DOM
+Shadow DOM serves for encapsulation. It allows a component to have its very own “shadow” DOM tree, that can’t be accidentally accessed from the main document, may have local style rules, and more
+
+
+💹 We were all equals, including myself, regardless of title or level.
+
+💹 No meetings on Fridays, before 9am or after 4pm or on vacation.
+
+💹 The work was performed their way. My focus was on outcomes.
+
+💹 PTO was encouraged to be taken regularly, leaving no days on the table.
+
+💹 Having employee back up plans so returning from vacation wasn't a chaotic firestorm.
+
+💹 Nobody worked alone. My team was the strongest when we worked together and took care of each other.
+
+💹 Family first and always. I appreciated, valued and respected my team had lives outside of work.
+
+💹 Performance discussions happened in 'real time' so there were no surprises come review time
+
+💹 News that impacted their work would come directly from me and not revealed in a big meeting.

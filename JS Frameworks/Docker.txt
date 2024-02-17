@@ -1,0 +1,107 @@
+Docker :
+    Open platform for developing, shipping & running application from one env to another.
+    It is mainly useful in resolving system compatbility issues w.r.t libraries, dependencies
+    Creates package which has dependencies, code, libraries, software etc.
+    Package will be shipped from one env to another using image
+    Package = components + code + libraries + dependencies + software; Package -> Build -> Image shipped to other env
+
+    High level Architecture :
+        Docker Engine - Takes care or manages all the containers and Memory/Resource allocation
+        Supports multiple packages/container which eventually has multiple dependencies
+
+        DockerFile - Kindof text file which contains commands to build a docker image
+
+        Docker Image - Template to create container of the application. Kindof replica of package
+
+        Docker container - It contains docker image & runs instance of the application.
+
+        Containerization : DockerFile -> Execute Build -> Docker Image -> Ship -> Run -> Docker Container
+
+
+    Benefits 
+        Portability
+        Consistency
+        Scalability
+        Isolation
+        Better version control
+        DevOps integration
+
+    2 major concepts in Docker :
+        Image : Lightweight standalone executable package consist of code, libraries, etc
+        Container : Execution environment for running docker image instance.
+        
+    Docker workflow :
+        Docker client : UI to issue command. Either CLI or GUI
+        Docker Host / Engine : Create and manages containers
+        Docker Registry / HUB : Central repository to publish public/private images
+
+    Common Dockerfile commands :
+        From : Base image to use to build new image
+        WorkDir : Working directory where we need to build image
+        Copy : Copy all items such as code/tools/libraries needed for building image
+        Run : Execute inside shell to finally build image
+        Expose : Specify PORT to listen app at runtime
+        ENV : Set the environment DEV/TEST/PROD
+        ARG : Build time variables
+        Volume : To connect with external storage during build time
+        CMD : Specify commands to run your application. Default executable point
+
+
+    docker images
+    docker ps
+    docker build -t nameOfImage //build image
+    docker run -it nameOfImage // run image inside container
+    docker run -p port:port -v "$(pwd):/appname" -v appName/node_modules nameOfImage //watch changes
+    docker init  - It will generate .yml file
+    docker compose up
+    docker compose watch 
+    .yml - compose all the services such as FE, BE & DB
+    .Dockerfile - commands for building image
+    .dockerignore - same as gitignore
+
+
+
+EXAMPLE :
+
+
+FROM node
+WORKDIR /app
+COPY package*.json .
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD npm run dev
+
+
+version 3.8
+
+services:
+    frontend:
+        build:
+            context: .
+            dockerfile: dockerfile
+        ports:
+            - 3000:3000
+        container_name : front-end-container
+        environment:
+            - key:value
+        depends_on:
+            - backend
+        develop:
+            watch:
+                - path : ./package.json
+                  action : rebuild
+                - path : ./package-lock.json
+                  action : rebuild
+                - path : ./next-config.js
+                  action : rebuild 
+                - path : .
+                  target : /app
+                  action : sync
+volumes:
+    xyz:
+
+
+
+    
+

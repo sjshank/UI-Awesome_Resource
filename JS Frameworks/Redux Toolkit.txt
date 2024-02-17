@@ -1,0 +1,107 @@
+Redux in ReactJS ?
+	Redux is helpful in managning a central place to handle state of the application. It is a 3rd party standalone library which works 
+	totally independent of the react and doesnt connect with react automatically. Uses react-redux fof connection.
+	It has a central store that stores entire application store. Redux define process to change state sofistically so that any failure can be caught.
+	First building block -  Actions which are distached from javascript/components. Actions are just a information and type such as 
+	addData, removeData and also holds payload. Actions do not make any changes directly into store.
+
+	Secound building block - Reducers are responsible for changing the store. We can combine multiple reducers into one.
+	There will be only one root reducer which is connected to Store.
+	Actions reaches to Reducers which contains type and information, reducer checks the type and execute the code defined for that type
+	of action. 
+	The Reducer is just a pure function which recieves the action and old state as input and then returns/spits out updated state. 
+
+	In reducer, it's just simple input in and output out. No delay.
+	Reducer spits updated state and replace old state in store in a immutable way i.e. returns a JS object.
+
+	After store gets updated, triggers all the subscription automatically and components can subscribed them. Store passes updated state to components as props.
+
+	Reducer is strongly connected to store. It is the only thing that updates the store.
+
+	Subscription makes sure that we dont have to call manually store to retrieve update state.
+
+	If we dont have case/handler inside reducer for any dispatch action then reducer returns the old state and doesnt affect the state
+	of application.
+
+	Unlike in React, where state gets merge with old state in redux everytime we return from reducer it returns the new state.
+
+	Redux is not replacement for a database. As user refreshes page, application and redux state is gone. Only relevant data should be
+	store in redux such as user authenticated object.
+
+
+Redux Flow in Navigation form ----
+	wants to manipulate app state -->> Make some state changes in component -->> Dispatches state as data to Action --> Action contains
+	information, type and payload -->> Action then reaches to Reducers --->> Reducers recieve action and update state --->> Reducer 
+	acts like a pure function take input and spits updated state as output -->> it then gets stored into Store --->> Store triggers 
+	automatically subscription -->> Component handle subscribed function/event and further work on updated state passed by store as a props.   
+
+
+
+react-redux ?
+	It is used to connect our react app with redux. Basically, redux store to react application.
+	Provider is a helper component allows to inject store into react component.
+
+
+
+Types of State and when to use Redux for them ?
+	
+	Local UI State - For example show/hide modal, backdrop - Mostly handled by component. No need to use Redux
+	Persistant State -  For Example user details, contact info - Only relevant data should be manage by redux reset stored on database.
+	Client State - For Example User authenticated data - Should be managed by Redux.
+
+
+
+Three Principles of Redux ?
+	Single source of truth - The global state of application should stored in a single object tree using store api.
+	State is read only - The only way to update state is to emit action that describe what needs to be happen.
+	Changes are made with pure function - Use reducer to make changes on old state based on action and returns updated state  
+
+
+    
+Redux Toolkit
+		javascript library to standardize & simplified redux logic
+		Addresses 3 major concerns of redux
+			- configuring store in redux is complicated
+			- too many packages to get started with something useful
+			- too much of boiler code required
+		internally uses immer package to update state without any side effects (immutability)
+        exports many functions and dependencies that are commonly used with redux
+
+    Commonly used APIs by Toolkit
+        - configureStore(): wraps createStore method of redux to simplify configuration options and generate store based on supplied parameters
+        - createReducer() : It uses Immer library to write a code such that data can be mutate in a immutable manner. Helps in achieving purity of the function & single source of truth. Also simplifies case reducer functions.
+        - createAction() : generates an action creator function for the given action type string.
+        - createSlice() : accepts an object of reducer functions, a slice name, and an initial state value, and automatically generates a slice reducer 
+
+    What are the painfull points toolkit solves ?
+        - No need to call createStore explicitly
+        - manual step for configuring & creating store has become less
+        - setting up middleware overhead has been reduced
+        - inbuilt redux devtools extension enabled
+        - combineReducer is being called automatically for more than 1 reducer
+        - common dependencies such as redux-thunk belongs to a package & doesn't require additional setup
+        - no more overhead of defining action constants, actions, reducer functions separately. createSlice makes a save here
+        - mutating the object or nested objects has become simple. Less chances of mistake
+
+
+	Performance & Best practices :
+		- Do not mutate state directly. Use immutable way
+		- No side effects. Reducer must pure functions
+		- Only serialize data in state. No functions, promises etc
+		- Only one redux store per app
+		- Can have multiple reducers (breaking down into smaller) & then combine them using combineReducer
+		- Reducer cannot share state using combineReducer. Use store.getState() method to retrieve state
+		- Always consume/provide store from root component & let react-redux take care of passing data to child components
+		- Avoid importing the store directly into other components
+		- Make use of useSelector or useDispatch to read & update state
+		- Make use of createSelector to memoized state
+		- Do not go for deep clone. Follow shallow copy to mutate state
+		- Avoid dispacting events sequentially. Use of BOTH api to re-render comp once
+		- Let all the reducers to listen all the actions. If you would like to avoid use redux-ignore -> ignoreActions
+		- Place websocket connection inside middleware for persistant connection as middleware has lifespan till app
+		- Write all the business logic inside reducer
+		- Good practice to define actions using createActions, use of switch statements
+		- Try to normalize data using adapter pattern or normaizer library. Helps to cache data
+		- Only use redux when there's a problem with vanilla code/react/js
+		- Handle async actions using middleware
+		- Do not put all the state or form state inside redux. Handle using useState/useReducer

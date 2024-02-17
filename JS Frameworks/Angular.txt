@@ -1,0 +1,219 @@
+Angular ?
+    A framework for building client applications in HTML, CSS, JS/Typescript.
+    It helps in maintaining complex applications, structing projects, inbuilt implements different JS deisgn patterns.
+    It gives our application a  :
+        Clean and loosely couple structure
+        Easy to understand and maintain
+        Includes lot of re-usable code
+        Makes our application more testable by writing automated test
+
+@Angular/Cli ?
+    Command line interface tool used to create new Angular project, generate some boiler plate code and deployable packages.
+
+
+Type Assertion in Typescript ?
+    It helps compiler to detect type of the variable by prefixing variable with angle brackets and type inside it. 
+    let strData = "abc";
+    <string>strData.endsWith('c');
+    IT DOES NOT CHANGE TYPE OF VARIABLE AT RUNTIME.
+
+Access Modifiers in Typescript ?
+    Public - By default properties, methods are public
+    Private
+    Protected
+
+Decorators in Typescript ?
+    It is used to enhance your class or elements by adding properties. always start with @
+
+Components ?
+    One of the building block of Angular. Heart of the application.
+    It encapsulate data, html, and logic for a view.
+    Angular always has 1 app component with tree of number of child components.
+    create component -> Register component with module -> Add html/template to component
+    @Component Decorator - Used to attach a class to make/behave like a component. It's a function and takes object as argument
+                            which will be stored as metadata in background and tells angular what to do with this class.
+        selector - to register component with custom html tag
+        template/templateUrl - inline html or relative path to template
+        style/styleUrls - inline style or list of style urls
+
+    selectors - Element, Attribute and Class selector. Dosnt work with ID, Psuedo selector
+
+
+Modules ?
+    It is a container for group of related components. Every Angular app has atleast 1 app module and as application grows we can break module into smaller modules.
+
+
+Databinding ?
+    Databinding = Communication
+    Basically, a Communication between Typescript code based component and template.
+    
+    2 ways data binding can be achieved from Typescript to template.
+        Interpolation - {{data}}
+        Property binding - [property] = "data"
+
+    Event Binding - React to user events such as onclick
+        (event) = "expression"
+
+    Two way Databinding 
+        [(ngModal)]="data"
+
+
+Interpolation - can not write any block or control expression inside Interpolation expression {{}}. Can use ternary operation.
+
+Proper Binding - [] brackets indicates that we are uisng property binding that means we want to bind some Attribute/property dynamically to html.
+
+$event - reserved keyword by angular can be used in template when using event binding for passing data
+
+Directives - They are instructions in the DOM. Components are kindof one of them.
+            When we use component selector in html, we inform angular to render template content, execute Typescript code,
+            business logic of a component.
+            In short, components are Directives with templates.
+
+*ngIf - Structural Directive because it changes structure of our DOM.
+
+ngStyle - Attribute Directive they dont change structure of our DOM by adding or removing. They only add feature to element where they placed.
+
+@Input - Decorator that marks a class field as an input property or bindable from outside of component.
+        It is one of th way to setup custom property binding.
+        It should be used as function i.e. @Input().
+        We can setup alias for Input parameter by decalring alias name i.e. @Input('someName')
+        Alias helps in resolving antiquity, reusability
+
+EventEmitter - Is a class that is used to create event emitter object in Angular which allows us to emit your own events
+                from child to parent component in order to achieve Communication.
+
+
+@Output() - Decorator that marks a class field as an output property. It makes property of component listenable from outside.
+            It should be initialize with EventEmitter class.
+
+
+Component Communication - It is a key feature of Angular. With @Input, ability to make your component properties bindable from outside from parent to child.
+                        @Output, ability to listen your events inside parent component triggered from child component using EventEmitter object.
+
+
+View encapsulation - A nice tool ensuring that by default only your component receives the styles you defined for it within component.
+                    It can be change/configure by uisng 'encapsulation' metadata property of component with values 'None', 'Emulated', 'Native'
+
+
+Local Reference on templates - It can be place on any html element using #VariableName to hold Reference of that element 
+                            and that Reference can be used anywhere inside template but NOT IN TYPESCRIPT CODE.
+
+
+@ViewChild - Decorator to access template, HTML element and DOM. It gives Reference of binded element inside ElementRef object
+            @ViewChild('aliasName') VariableName: ElementRef
+            Not Recommended to update element property/Attribute using Reference retrieve from ViewChild.
+
+
+ngContent - It's a directive and another way to communicate between component if we dont want to use custom property binding. 
+            It acts like a hook in angular and use to project your content from parent component into child.
+
+
+@ContentChild - Used to access content passed by parent comp to child component using ng-content. ViewChild has only ability to access own comp DOM.
+                @ContentChild('aliasName') VariableName: ElementRef
+
+
+Component creation by Angular ?
+        Angular is responsible for creating new component when it finds related selector in DOM. It instantiate new version of
+        that component and add it to the DOM. When component instantiated, angular goes through couple of different phases in these 
+        creation process and give us chance to hook into these phases and execute code.
+
+
+LifeCycle hooks in Angular ?
+
+    ngOnChanges - called after a bound input property changes. It is executed right at the start when a new component is created,
+                    but thereafter it is always called whenever bound input properties changes.
+    ngOnInit - called once component is initialized. This method runs after constructor of class. 
+                We can initialize properties inside ngOnInit.
+    ngDoCheck - Called during every changes detection. Angular has intternal change detection system which runs based on component changes and that makes this method to run multiple times.
+                It gets even called when user clicks on button, change any property etc It doesnt cost any performance.
+    ngAfterContentInit - Called after content (passed using ng-content) has been projected into view
+    ngAfterContentChecked - Called every time projected content has been changed and detected by Angular.
+    ngAfterViewInit - Called after component and child view's has been initialize
+    ngAfterViewChecked -  Called every time the view (and Child view) has been changed and detected by angular
+    ngOnDestroy - Called once your component about to destroy. Good for doing clean up activity 
+
+
+
+Attribute Directives ?
+    They sit on element and apply additional behavior to that element only. It doesnt destroy element from the DOM.
+    Only changes property of that element. For example, background color.
+    It looks like normal HTML Attribute
+    Examples: [ngClass], [ngStyle]
+
+Structural Directives ?
+    They sit on element and add/remove/destroy DOM element. They make the Structural changes to DOM. Affect whole area of DOM.
+    Look like normal HTML Attribute but have a leading *
+    Examples : *ngFor, *ngIf
+    We cannot have more than 1 Structural directive on one element.
+
+Custom Directive ?
+    We can create our own custom Attribute directive using @Directive decorator and registering inside module.ts
+
+                        
+Services in Angular ?
+    They act like a central repository or business unit where you can store,centralize your service, log something etc.
+    Basically a place that is useful to create and utilize reusable logic for performing some action.
+    We should not create object manually for accessing service. Angular provides @Injectable tool to create instance of service for reusing in different comps.
+    We can Communicate cross component using service with EventEmitter. Add method of EventEmitter type and emit event from one component and subscribe event at another component.
+
+     Services can be loaded lazily by Angular (behind the scenes) and redundant code can be removed automatically. 
+     This can lead to a better performance and loading speed
+
+     Services are helpful in passing data from one service to another, sending data by emitting and subscribing events.
+     Communicate between 2 separate modules by connecting services of modules.
+
+Angular dependency Injector ?
+    dependency injection is the process where it finds and create instance of service automatically for those components
+    which are having dependency on the Services and inject them into component. We need to inform angular that we need such instance
+    in our component by binding the service inside constructor of component class and providers in metadata.
+
+
+Heirarchy Injector ?
+    Angular inject dependency in Heirarchy tree component structure.
+    If we set service inside providers for each component then it will create it's own service instance.
+    If we set service inside providers of app module then it will only create single instance of service and shared across all the child components.
+    In order to inject service inside service then register your services at app module providers level.
+
+
+
+@Injectable - Decorator which notifies that Service is ready to inject other service in order to use it's methods.
+            But it is Recommended to always use @Injectable for every service
+
+
+Routes - It is used to inform Angular about routing configuration. RouterModule is required to import and register for root/childRoot routes.
+
+<Router-Outlet> - A directive which simply tells angular router to load components of current selected route inside reouter-outlet directive based on routes URL config. 
+
+
+RouterLink - ?
+
+ActivatedRoute - Inject the current routes.
+
+WildCard Route - Catch all path Angular doesnt know from config and generic route using ** must be at last position in route config.
+
+Pipes in Anuglar - Evaluated from left to right
+
+Async Pipe - built in pipe and helps us handling async data.
+
+Observable - Angular heavily uses observables. If code is not subscribing to http call then Angular and rxjs will not trigger any call.
+			All HttpClient methods returns Observables.
+            Obervables trigger data and observers listen to that data by subscribing them.
+            Every observables has pipe method to execute and transform data before it reaches to subscription. 
+
+
+RXJS Operators - Used to transform response/raw data by using different methods inside pipe.
+
+
+HttpClientModule from  angular/common/http  - Required for implementing Http request and response system
+HttpClient from angular/common/http - Class used for making Http request calls. Every method returns Observables. Subscribing response to handle return data and error.
+HttpHeaders from angular/common/http  - Required for adding custom headers for an individual hhtp request.
+HttpParams from angular/common/http -  Required for adding query params to http request 
+Observe from angular/common/http - Require to refactor response structure 
+		Observe : 'response' - will give you complete response body including header
+
+HTTP_INTERCEPTORS - Token used by Angular to identify that system is using http interceptor
+
+
+
+
+

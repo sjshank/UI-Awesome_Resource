@@ -1,0 +1,67 @@
+CSS Flexbox Layout
+
+    - Referred as 'Flexible Box Layout' CSS layout model
+    - Provide flexible way to align & distribute space within container ietms
+    - It follows one-dimensional layout model. Either as row or column 
+    - good for small scale layouts
+    - 2 axes of Flexbox
+        - Main axis : It is defined by "flex-direction: row/row-reverse/column/column-reverse"
+        - Cross axis : It is perpendicular to main axis. So if main axis is row then cross axis is column 
+    - it has became easy to create complex layout & responsive pages as we don't need combination of float & position
+    - Develop responsive layouts without writing lots of media queries
+    - Reorder elements using 'order' property without changing the HTML structure
+    - Align and center elements using properties like justify-content and align-items
+
+    Flex container properties :
+        To start with flexbox layout, you need to set element with display:flex/inline-flex which will turns element into flex container
+        - display:flex -> makes flex container behave like block-level element
+        - display:inline-flex -> makes flex container behave like inline element
+        - flex-direction : defines the direction for displaying the flex items : row(default)/column/row-reverse/column-reverse
+        - flex-wrap : let the flex-items overflow or begin on a new line : nowrap(default)/wrap
+        - flex-flow : lex-direction + flex-wrap
+        - justify-content : alignment of flex items on the main axis of the flex container : flex-start(default)/center/space-around/sapce-between/flex-end
+        - align-tems : alignment of flex items on the cross axis of the flex container : stretch(default)/center/flex-start/flex-end
+
+
+    Flex item properties :
+        Every direct child of flex container treated as flex item. These properties can apply to individual flex item
+        - order : determines the order of appearance for the flex items : numberic value
+        - flex-grow : to adjust extra space added by flex container
+        - align-self : same as align-items. whereas align-items applies to all flex items, the align-self property is applied to only specific items
+        - flex-basis : set the default length of a specific flex item. width or heigth depends on flex-direction
+
+    How to Center an Element With Flexbox ?
+        Make the parent element a flex container by setting display to flex.
+        Give a value of center to both justify-content and align-items.
+
+    Any bugs in flexbox ?
+        some HTML elements cannot act as flex containers : button, fieldset, summary
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+CSS Grid Layout
+
+    - Display web page as grid box model
+    - Allows to resize & reposition elements under grid container 2 dimensionally
+    - it follows two-dimensional layout model. both as row or column together
+    - good for large scale layouts
+
+    Grid container properties :
+        To start with grid layout, you need to set element with display:grid/inline-grid which will turns element into grid container
+        - display:grid -> makes grid container behave like block-level element
+            creates only single-column grid container
+            The grid items will display in the form of one item below another
+        - display:inline-grid -> makes grid container behave like inline element
+        - grid-template-columns -> specifies the number and widths of columns browsers should display in the selected grid container.
+            grid-template-columns: 50px 50px ; // 2 columns each width 50px in single row 
+            grid-template-columns: 15% 60% 25%; // 3 columns each width 50px in single row 
+        
+        - grid-template-rows -> specifies the number and heights of rows browsers should display in the selected grid container.
+            grid-template-rows: 95px 1fr 70px; // 3 rows with different height in single column
+
+        // 3 Rows 4 Columns
+        grid-template-rows: 90px 300px 1fr;
+        grid-template-columns: auto auto auto auto;
+
+        - justify-content : how browsers should position a grid container's columns along its row axis. : start/end/center/space-between/space-around/stretch
+        

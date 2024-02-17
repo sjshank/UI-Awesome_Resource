@@ -1,0 +1,39 @@
+Frontend Architecture
+    Collection of practices, process & tools that aims to improve/upgrade your application code
+    Helps in creating productive, scalable & sustainable worklfow
+    It sets the standard to developers for writing code, reflecting best practices, documentation, SOP & achieving quality product.
+
+    4 aspects of FE Architecture
+        - Component-based arch
+        - State management
+        - Data flow & management
+        - Bundling/Automation process
+
+    Benefits of frontend architecture
+        - Modularity
+        - Separation of concern
+        - Easily scalable
+        - Faster development & productivity
+        - Targeted testing
+        - Easy to maintain & reuse components
+
+    Best practices of frontend architecture
+        - optimize design-to-development handoff
+            # detailed design document inclued wireframes, style guides
+            # use of collaborative tool such as figma
+            # involve developers in ux design process & take their feedback
+            # conduct regular design review 
+            # launch & evaluate design post handoff
+        - make use of CSS frameworks such as Tailwind/Material-UI components for consistent UX
+        - focus on component based arch, 
+        - proper state management
+        - data arch pattern & component design pattern 
+        - make use of bundler to automate the process
+        - Embrace modularization : ES6Module
+        - leverage component-base arch : React/Angular
+        - Optimize performance : Caching mechanism, lazy loading
+        - Reusable component : stateless/pure component
+        - Focus on functional programming : React functional components
+        - Implement Microfront for domain-wise : Microfrontend arch
+        - Refactor code, address technical debt
+        - Data flow & app security

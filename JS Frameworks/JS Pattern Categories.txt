@@ -1,0 +1,177 @@
+JS Pattern
+
+1. Creational - Based on the concept of creating an object.
+	Builder, Singleton, Prototype, Construtor, Factory
+
+2. Structural - Based on the idea of building blocks of objects. In simple words, concept of structuring the objects within application
+	Composite, Module, Decorator, Bridge, Facade, Adapter
+
+3. Behavioral - Based on the way objects play and work together. Concept of communicating or flow of data between objects
+	Observer, Iterator, Mediator, Provider, State-Reducer 
+
+
+Few more patterns :
+
+	Proxy pattern - Service worker
+	Middleware pattern - middlewares in NodeJS
+	Static & Dynamic import 
+	Route based splitting
+	Bundle splitting
+	Preload
+	Prefetch
+	Tree Shaking
+--------------------------------------------------------------------------------------------
+
+
+Module Loader
+
+Spliting multiple files into number of files are act as a module. Gives following benefits
+	Modularity
+	Reusability
+	Abstraction
+
+
+CommonJS  VS  AMD   VS   ES Module   
+
+CommonJS  - Designed for server side development. Load the modules synchronously using keywords as require and exports
+Node JS - Influenced by CommonJS - uses the same approach with only difference is it uses module.exports variable to export functions into an object. Circular dependencies are supported.
+One file per module. Not fully integrated with all language/frameowkrs require library such as browserify
+** "require" and "module.exports.propertNameNeedToBeExport" used to implement CommonJS
+
+
+
+AMD (Asynchronous Module Definition) -  Designed for client side development. Load the modules Asynchronously using keywords as define, require, exports.
+It calls the dependent function only when module finish their loading. Circular dependencies are supported.
+Modules can be split into multiple files if necessary. fully integrated with all language/frameowkrs
+
+
+
+ES2015 Module -  Offers possibilities for importing and exporting modules compatible with both synchronous and asynchronous modes of operation. Circular dependencies supported. fully integrated with all language/frameowkrs. 
+Since E6 isn't fully supported by browser hence requires babel library for transpiling.
+
+If you are looking at starting a new module or project, ES2015 is the right way to go and CommonJS/Node remains the choice for the server.
+
+
+ES2015 Module imports are hoisted.
+Imports are read-only views on exports.
+Support for cyclic dependencies but should be avoided.
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+Design Principles for writing quality code
+
+	SOLID : set of five software design principles aim to make software design easy to understand, maintain & flexible
+		- Single responsibility : Every class/object/component should have only one responsibility
+		- Open-Closed : Our modules should be ready to extend without modifying them. Example : Interfaces
+		- Liskov Substitution : subclasses should be substitutable for their base classes. A client using a base class should continue to function properly even if a derived class is passed to it.
+		- Dependency Inversion : Classes/Objects should depend on abstraction of other classes/objects instead on concrete implementation
+		- Interface Segregation : It is better to have smaller interfaces than fewer, fatter interfaces. Class should use different interfaces created for different purposes
+
+	DRY : Don't Repeat yourself
+		- Elimination of duplicate code
+		- Each piece of code/logic should have single representation within system
+		- Reduce complexity
+		- Code reusability
+
+	KISS : Keep it simple, stupid
+		- Simplicity in code design & implementation. Avoid over-engineering
+		- Promotes better code understanding & maintanence. Easy to solve 
+		- Reduces error
+		- Easy to scale code
+
+	Composition over Inheritance
+		- advocates for using class/object/component composition instead of inheritance	
+		- reduces complexity & increases reusability
+		- multiple level inheritance makes dependencies rigid
+		- brings modularity, object flexibility & more scalable code
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Cookie Securities
+	- Encrypt and hash sensitive cookies, password, tokens
+	- Set sensitive with HTTPOnly & Secure attribute
+	- Set cookies with SameSite=strict/lax/none 
+	- Use short expiry time for cookies. Use refresh token
+	- Use CSRF tokens to prevent CSRF & XSS attack
+	- USe HTTPS protocol for all communication
+	- use CSP, CORS policy to secure cookies from cross domain
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Best practices for Core Web vitals & site performance
+	- Core web vitals : FCP, FID, CLS
+	- Eliminate request blocking resources
+	- Define Critical & non-Critical resources, CSS/JS/Images
+	- Defer non-critical css/js/images
+	- use minified js/css & compress images
+	- minify & compress http request/response, serve content as gzip
+	- Remove un-used CSS/JS/Images
+	- Preload/prefect/Preconnect resources, load resources from CDN
+	- Set correct dimensions to static/dynamic images, use srcset, aspect-ratio
+	- Validate/sanitize 3rd party libraries, set loading priority, use async/defer attributes
+	- Set loading, fetch priority attributes of images
+	- Do not use complex layout, focus on css to avoid CLS
+	- Use responsive images for device specific
+	- Break-up long task into smaller, do not block main thread, use web-worker
+	- cache assets/images/resouces for offline support using service worker
+	- Use manifest file to customize app for other devices
+	- use robots.txt to secure private pages from crawler bots
+	- consider for SSR or SSG, reduce direct dom manipulation
+	- use code-splitting, lazy loading, reduce bundle size using splitchunksplugin
+	- use modern JS/Images, such as ES6, video file instead gif, WebP instead of jgp, png. Vector images
+	- Reduce web fonts size, prefetch/preload, host them on same server
+	- Minize animations using JS, reduce adding dynamic content on top section of viewport
+	- Reduce JS execution time, minimize unused polyfill & defer unused js code
+	- Load script using module type instead script
+	- Use modern webpack, babel, rollup loader & plugins to build project
+
+
+Webpack 
+	- Loaders : Use to load different types of files inside your JS file
+		- babel-loader, style-loader, css-loader, file-loader, ts-loader, html-loader, markdown-loader etc.
+	- Plugins :  Backbone of webpack & add power stuffs to your project which loaders can't
+		- HTMLWebPlugin, CSSMinification, HTMLminimizer, Imageminizer, Compression, Terser for treeshaking & minification, splitchunks, limitchunks, Bundleanalyzer etc.
+	- How to reduce bundle size :
+		- code splitting
+		- Use dynamic imports
+		- Use lazy loading
+		- do not load complete polyfill
+		- Use small libraries
+		- untag unused circular libraries
+		- Tree shaking , remove unused/redundant code
+		- do not export source-map
+
+
+
+Peer Review Checklist
+	- Check code works fine, meeting requirement, easy to understand & test
+	- Use ES6 standards, smaller & readable functions, breakdown large task into small task, easy to test
+	- Handle exceptions, promises, API response, adhere to security checks
+	- JS design patterns, proper naming & file conventions, remove unused NPM packages, separation of concern
+	- Apply SOLID, DRY, KISS principles
+
+	- coding guidelines, proper comments, documentation of new features, use config & env variables
+	- No hardcode values, use constant variables, avoid multiple if/else
+	- No console logs, no broken authentication & access control, validate & sanitize user inputs
+	- Examine & evaluate 3rd party libraries, validate URL protocols
+
+	- Proper type checking, do not mutate state directly, no direct DOM manipulation
+	- smaller & pure components, use react design patterns
+	- dynamic import & lazy loading, lift state to common component
+	- memoized components, no redudant/duplicate/conflicting & avoid nested object in states
+	- use hooks wisely, do not overuse context api
+	- composite over inheritance, do not use inline-styles, use & run eslint, check vulnerabilities
+	- Utilize HOC, Custom hooks, type definition standards, run clean up under useEffect
+	- Handle errors effectively, use of error boundaries, try-catch, proper logging-monitoring
+
+
+Cross-Browser Compatibility - BrowserStack
+	- Use reset.css & normalize.css, write vendor specific styles, use feature detection
+	- Test on multiple browsers for multiple devices using browserstack
+	- Use polyfills, write modern JS features, transpile code using babel
+	- Run ES lint, avoid global namespace pollution
+	- Validate HTML/CSS, maintain layout, use HTML5 features & semantic tags

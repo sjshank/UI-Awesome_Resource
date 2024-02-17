@@ -1,0 +1,94 @@
+Array in JavaScript
+    stores collection of multiple items & provide methods to perform operations
+    They are not primitive datatypes rather Array objects
+    They are resizble, Dynamic & non-static contains mix of different datatypes
+    They are not associative arrays means can be accessed using indexes
+    They are zero-indexed and starts with index 0
+    Copy operations create shallow copies. No deep clone
+
+Array.at() 
+    - takes an integer value and returns the item at that index, allowing for positive and negative integers.
+    - Negative integers count back from the last item in the array
+    
+    const array1 = [5, 12, 8, 130, 44];
+    array1.at(1) // 5
+    array1.at(-1) //130
+    array1[1] == array1.at(1) // true
+    array1[-1] == array1.at(-1) // false
+    array1[array1.length-1] == array1.at(-1) // false
+
+Array.concat()
+    - used to merge two or more arrays
+    - does not change the existing arrays, but instead returns a new array
+    - returns shallow copy
+    Array.concat(value1, value2, /* …, */ valueN)
+
+Array.entries()
+    - returns a new array iterator object that contains the key/value pairs for each index in the array
+
+    const array1 = ['a', 'b', 'c'];
+    const iterator1 = array1.entries();
+    iterator1.next().value // [0,'1']
+
+Array.fill()
+    - changes all elements within a range of indices in an array to a static value. It returns the modified array
+    - it's a mutating method. Change existing array
+    - fill(value, start, end)
+
+    const array1 = [1, 2, 3, 4];
+    array1.fill(0, 2, 4) // [1,2,0,0];
+    Array(3).fill({}); // [{}, {}, {}]
+
+Array.find()
+    - returns the vale of the first element that satisfies the condition. if not satisfies returns undefined
+
+    const array1 = [5, 12, 8, 130, 44];
+    const found = array1.find((element) => element > 10);
+    console.log(found); // 12
+
+Array.findIndex()
+    - returns the index of the first element that satisfies the condition. if not satisfies returns -1
+
+    const array1 = [5, 12, 8, 130, 44];
+    const found = array1.findIndex((element) => element > 10);
+    console.log(found); // 1
+
+Array.findLast()
+    - iterates the array in reverse order and returns the value of first element that satisfies the condition. if not satisfies returns undefined
+
+    const array1 = [5, 12, 50, 130, 44];
+    const found = array1.findLast((element) => element > 45);
+    console.log(found); // 130
+
+Array.findLastIndex()
+    - iterates the array in reverse order and returns the index of the first element that satisfies the condition. if not satisfies returns -1
+
+    onst array1 = [5, 12, 8, 130, 44];
+    const found = array1.findLastIndex((element) => element > 10);
+    console.log(found); // 4
+
+Array.from()
+    - static method
+    - creates new shallow copy of array from iterable or array-like object
+    - Array.from(arrayLike, mapFn, this)
+
+    Array.from('foo'); // ['f','o','o'];
+    Array.from([1, 2, 3], (x) => x + x) // [2, 4, 6]
+
+    const set = new Set(["foo", "bar", "baz", "foo"]);
+    Array.from(set); //  ["foo", "bar", "baz" ]
+
+Array.includes()
+    - determines whether an array includes a certain value. returns true or false
+    - includes(searchElement, fromIndex)
+
+    const array1 = [1, 2, 3];
+    array1.includes(2) // true
+
+Array.of()
+    - creates a new Array instance from a number of arguments
+    - Array.of(element1, element2, /* …, */ elementN)
+    - Array.of(2) & Array(2) both gives different result
+    - Array.of(1, 2) & Array(1, 2) both gives same result
+
+    Array.of('foo', 2, 'bar', true) // ["foo", 2, "bar", true]

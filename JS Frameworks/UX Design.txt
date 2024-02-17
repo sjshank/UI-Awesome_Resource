@@ -1,0 +1,71 @@
+Difference between UI design & UX design ?
+    UI designer/developers focuses on the visual elements and interactions within a digital product. In other words, focus on building user interface elements using html css etc
+
+    UX designers responsible for designing layouts, overall user flow, customer journey, wireframes & design system
+
+    UI designer is the subset of UX designers and both need to work collaboratively to ensure delightful user experience
+
+
+UX design process ?
+    Systematic approach of creating user-centered designs that meet goals of user
+
+    User Research - Conduct user research to gain a deep understanding of the target audience, their behaviors, needs, and their pain points. Take user interviews, surveys, data analysis etc
+
+    User Persona - Fictional representation of typical users that helps in making design decisions
+
+    Information architecture - organizing & structuring content such as creating user flow, sitemaps, hierarchy of information
+
+    Wireframing - Visual representations of the user interface, outlining the layout and basic functionalities
+
+    Usability testing - Identifying issues, gathering feedback, validating design decisions, performing A/B testing
+
+    Refinement/Iteration - Work on the feedback gathered from testing
+
+    Handoff: Once the design is in a good place, prepare the design assets and create documentation to hand off to the developer
+
+    Collaboration - hroughout the process, collaboration with stakeholders, developers, and other team members is crucial
+
+    Launch & Evaluation - After the design is implemented, it is launched to the users. Post-launch, it's important to gather feedback, monitor user behavior, and evaluate the success 
+
+
+UX design principles
+
+    User centered design
+    Consistency
+    Accessibility
+    Simplicity & user friendly
+    Responsiveness
+    Visual hierarchy
+
+
+Balance user needs and business goals in your designs
+
+    Conduct user research to gain pain points & user needs
+    Collaborate with stakeholders to understand from business prospective
+    Identify common ground & focus on win-win situation
+    Prioritize features & functionalities
+    Sometimes advocate for user-centered design principles
+    Continously gather feedback from users & stakeholders
+    Keep validating design decisions
+
+
+Constructive criticism of your designs
+
+    Keep yourself focus actively
+    Be open-minded
+    Clarifying doubts & questions
+    Gather all the feedback
+    Analyze problem statement clarefully and reflect on the solutions
+    Iterate & test
+    Appreciate the inputs/feedback
+
+
+Ensure consistency and maintain design standards across different projects
+
+    Advocate for design system
+    Style guides
+    Collaboration & communication with stakeholders
+    Design reviews & feedback
+    Clean documentation
+    Focus A/B testing
+    Continous improvement

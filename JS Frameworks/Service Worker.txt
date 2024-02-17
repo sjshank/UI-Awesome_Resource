@@ -1,0 +1,34 @@
+
+Service Worker :
+    Middleware/Meidator between Web application, browser & network/server.
+    It's a kind of proxy server between application & network which intercept every Requests
+    Service work have the access to a cache storage api
+    Use case : Service worker decides whether resource should be serve from network or cache. One of the main use cases for a service worker is to cache resources.
+
+    Browser  -><- Service Worker -><- Network/Server
+    
+    There are 2 different lifecycle of service worker 
+        1. Register a service worker for the first time
+            - Browser attempt to download the registered service worker (parse & execute)
+            - Install the service worker
+            - Activate the service worker
+        2. Update the existing service worker
+            - Browser attempt to download the registered service worker
+            - Install the service worker
+            - Wait to see if there's any existing service worker is serving the page load 
+            - Activate the service worker
+
+    
+    Similarities in Service & Web worker
+        - They both run in different thread without blocking main JS thread & UI flow
+        - They can't interact with DOM directly. Limited access to browser APIs
+        - They server different purposes 
+
+    Differences between Service & Web worker
+        - service workers allow you to intercept network requests. Web worker doesn't
+        - Only 1 service worker controls all the tabs of application. Web worker can be multiple 
+        - Lifespan of service worker is more comparatively web worker
+        - Service worker runs only on HTTPS 
+
+
+Tutorial : https://uploadcare.com/blog/service-workers-tutorial/

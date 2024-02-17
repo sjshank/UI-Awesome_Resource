@@ -1,0 +1,31 @@
+Monolithic architecture
+    app written as one cohesive unit of code
+    components designed to work together - tightly coupled, hard dependency
+    share same memory allocation & resource while execution
+
+    PROS :
+        Easy to use cross-cutting components such as logging in any part of application
+        Developers gain entire app knowledge smoothly
+
+    CONS :
+        tightly coupled difficult to isolate
+        chances of breaking application is high
+        not easily scalable
+        load on server as too many resource
+        code maintainability & sometimes harder to understand 
+
+
+Microservice/MicroFrontend architecture
+    app is made of lots of smaller & independent applications
+    components designed to work independently - loosely coupled, soft dependency
+    running in their own memory space and scaling independently
+
+    PROS : 
+        better organized, easy to decouple & configure
+        each microservice serves specific objective
+        easily scalable, code maintainability & better performance
+
+    CONS :
+        sometimes we need to re-write same components for each microservice separately
+        sometimes maintainence becomes costlier
+

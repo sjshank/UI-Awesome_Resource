@@ -1,0 +1,661 @@
+
+/********************* NEXTJS  - TAKE AWAY POINTS ***********************/
+
+
+Building Blocks of a Web Application
+  User Interfaces - how users will consume and interact with your application
+  Routing - how users navigate between different parts of your application
+  Data Fetching - where your data lives and how to get it
+  Rendering - when and where you render static or dynamic content
+  Integrations - what third-party services you use (CMS, auth, payments, etc) and how you connect to them
+  Infrastructure - where you deploy, store, and run your application code (Serverless, CDN, Edge, etc)
+  Performance - how to optimize your application for end-users
+  Scalability - how your application adapts as your team, data, and traffic grow.
+  Developer Experience - your team's experience building and maintaining your application.
+
+
+NextJS
+  Next.js is a React framework that gives you building blocks to create web applications.
+  Next.js is a framework built on top of React that extends its capabilities, allowing you to develop React applications with less hassle and greater optimization.
+
+Main features ?
+  Rendering
+  Routing
+  Data Fetching
+  Optimizations
+  Styling
+  Typescript
+
+
+Why it is called a framework ?
+  Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application.
+
+
+Why use NextJS ?
+  It employes Server Side rendering - Speeds up loading of the application pages
+  Improves SEO ranking - Makes indexing easier for search engine because the content is rendered before the web page is loaded.
+  Accelerates development server - Allowing you to see changes faster
+  Optimization - Image and font optimization features make the application faster and more stable
+  CSS Styling easier - Built-in CSS, Sass, and CSS-in-JS library support
+  Data Fetching - Simplified data fetching with async/await in Server Components, and an extended fetch API for request memoization, data caching and revalidation.
+  Accessibility
+
+  Performance - In Next.js : Automatic code splitting, filesystem-based routing, hot code reloading , static destinations and server-side rendering makes applications really fast.
+
+  SEO - Static websites become SEO-friendly because Next.js enables you to create them more quickly and efficiently.
+
+  Server side rendering (SSR) - When you need to give a different display to different users, it really gathers data and renders each request.
+
+
+  Next JS	                              React.JS
+Server-Side rendering	                Single-page rendering
+React based framework	                JavaScript library
+Specifically developed to 
+improve React.JS SEO	                Poor SEO
+Provided a variety of 
+SEO config tools	                    Additional software needed
+No additional software                Required	Create-React-Application required
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Routing
+
+  App Router - Built on top of React Server components & supports shared layouts, nesting routing, loading states, error handling.
+               It works in a new directory 'app' alongside 'pages' directory
+               It takes priority over pages router
+               By default, components inside 'app' are React Server components for performance optimization.
+               'app' folder is the root segment & represents "/" in URL path
+               Each folder under 'app' represents route segment that maps to URL segment
+
+               Every nested routes can have special file conventions to address UI
+                    layout - Shared UI for a segment and its children
+                    page - Unique UI of a route and make routes publicly accessible
+                    loading - Loading UI for a segment and its children
+                    not-found - Not found UI for a segment and its children
+                    error - Error UI for a segment and its children
+                    template - Specialized re-rendered Layout UI
+
+  Pages and Layouts
+
+        Pages - A page is UI that is unique to a route. 
+                A page.js file is required to make the route publicly accessible.
+                Pages are Server Components by default but can be set to a Client Component.
+                Pages can fetch data
+                .js, .jsx, or .tsx file extensions can be used for Pages.
+
+
+        Layouts - A layout is UI that is shared between multiple pages
+                  You can define a layout by default exporting a React component from a layout.js file
+                  The component should accept a children prop
+                  The top-most layout is called the Root Layout. This required layout is shared across all pages in an application. 
+                  Any route segment can optionally define its own Layout. These layouts will be shared across all pages in that segment.
+                  Layouts in a route are nested by default. Each parent layout wraps child layouts below it using the React children prop.
+                  Layouts are Server Components by default but can be set to a Client Component
+                  Layouts can fetch data
+                  Passing data between a parent layout and its children is not possible
+                  .js, .jsx, or .tsx file extensions can be used for Layouts.
+                  A layout.js and page.js file can be defined in the same folder. The layout will wrap the page.
+
+            
+              Root Layout (Required)
+                        The root layout is defined at the top level of the app directory and applies to all routes. This layout enables you to modify the initial HTML returned from the server.
+                        The app directory must include a root layout.
+                        Root layout must contain html and body tags.
+                        The root layout is a Server Component by default and can not be set to a Client Component.
+
+
+              Nesting Layouts
+                        By default, layouts in the file hierarchy are nested, which means they wrap child layouts via their children prop
+                        Layouts defined inside a folder apply to specific route segments and render when those segments are active
+
+
+        
+        Templates - These are similar to layouts but does not preserve state, DOM elements recreated, new instance of component mounted,
+                    any transition/animation effects are re-synchronized for each of their children navigation. This happens when user navigates between routes that share a common template.
+                    A template can be defined by exporting a default React component from a template.js file. The component should accept a children prop.
+                    template.js is rendered between a layout and its children.
+
+
+  Link & Navigation
+
+        Two ways to navigate between routes : <Link> component & useRouter hook.
+        Use the <Link> component to navigate between routes unless you have a specific requirement for using useRouter
+
+        <Link> component - <Link> is a built-in component that extends the HTML <a>
+                          It is the primary way to navigate between routes
+                          You can use it by importing it from next/link, and passing a href prop to the component
+
+        useRouter hook - The useRouter hook allows you to programmatically change routes
+                        This hook can only be used inside Client Components and is imported from next/navigation
+
+
+  How routing & navigation work ?
+      On the server, your application code is automatically code-split by route segments.
+      On the client, Next.js prefetches and caches the route segments.
+      When a user navigates to a new route, the browser doesn't reload the page, and only the route segments that change re-render - improving the navigation experience and performance
+
+      1. Prefetching - Preload a route/page in the background before user visit it.
+                      <Link> automatically prefetched the page as link visible to user.
+                      Prefetching happens when the page first loads or when it comes into view through scrolling
+                      Prefetching is not enabled in development, only in production
+
+      2. Caching - Next.js has an in-memory client-side cache called the Router Cache.
+                  As user navigate around the app, prefetched route segments & visited routes are stored in the cache
+
+      3. Partial Rendering - Only the route segments that change on navigation re-render on the client, and any shared segments are     preserved.
+
+      4. Soft Navigation - App Router uses soft navigation such that React only renders the segments that have changed while preserving React and browser state, and there is no full page reload.
+
+
+  Route Groups - Mark a folder as a Route Group to prevent the folder from being included in the route's URL path.
+                Allows you to organize your route segments and project files into logical groups without affecting the URL path structure
+                A route group can be created by wrapping a folder's name in parenthesis: (folderName)
+
+  
+  Dynamic Routes - When you don't know the exact segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments. 
+                  A Dynamic Segment can be created by wrapping a folder's name in square brackets: [folderName]
+                        Example : app/blog/[slug]/page.js will match /blog/a   - params { slug: 'a' }
+                  The generateStaticParams function can be used in combination with dynamic route segments to statically generate routes at build time instead of on-demand at request time
+                  Dynamic Segments can be extended to catch-all subsequent segments by adding an ellipsis inside the brackets [...folderName]
+                        Example : app/blog/[...slug]/page.js will match /shop/clothes or /shop/clothes/tops    - params { slug: ['clothes'] } or  - params { slug: ['clothes','tops'] }
+                  Catch-all Segments can be made optional by including the parameter in double square brackets: [[...folderName]]
+                        Example : app/blog/[[...slug]]/page.js will match /shop/clothes or /shop/clothes/tops or /shop    - params { slug: ['clothes'] } or  - params { slug: ['clothes','tops'] }   - params { }
+
+
+  Loading UI and Streaming - loading.js helps you create meaningful Loading UI with React Suspense
+                            With this convention, you can show an instant loading state from the server while the content of a route segment loads
+                            loading.js will be nested inside layout.js. It will automatically wrap the page.js file and any children below in a <Suspense> boundary.
+
+  
+  
+  Error Handling - error.js file convention allows you to gracefully handle unexpected runtime errors in nested routes
+
+        How it works ?
+                  1. When you add error.js file inside segment, it automatically creates a React Error Boundary that wraps a nested child segment or page.js component
+                  2. The React component exported from the error.js file is used as the fallback component
+                  3. If an error is thrown within the error boundary, the error is contained, and the fallback component is rendered.
+                  4. When the fallback error component is active, layouts above the error boundary maintain their state and remain interactive, and the error component can display functionality to recover from the error.
+
+                  'use client'  // Error components must be Client Components
+ 
+                    export default function Error({
+                      error,
+                      reset,
+                    }: {
+                      error: Error & { digest?: string }
+                      reset: () => void
+                    }) {
+                      return (
+                        <div>
+                          <h2>Something went wrong!</h2>
+                          <button onClick={() => reset()}>Try again</button>
+                        </div>
+                      )
+                    }
+
+
+        What are implications ?
+                    1. Errors bubble up to the nearest parent error boundary. This means an error.js file will handle errors for all its nested child segments.
+                    2. error.js boundaries do not catch errors thrown in layout.js or template.js components of the same segment because the error boundary is nested inside that layout/template component.
+                    3. To handle errors within a specific layout or template, place an error.js file in the layouts parent segment.
+                    4. To handle errors within the root layout or template, use a variation of error.js called global-error.js
+                    5. global-error.js is the least granular error UI and can be considered "catch-all" error handling for the whole application
+                    6. It is important to note that global-error.js must define its own <html> and <body> tags
+    
+
+  Parallel Routes -  simultaneously or conditionally render one or more pages in the same layout
+                   Allows you to define independent error and loading states for each route
+                   allows you to conditionally render a slot based on certain conditions, such as authentication state.
+                   Parallel routes are created using named slots
+                   Slots are defined with the @folder convention, and are passed to the same-level layout as props
+                   Slots are not route segments and do not affect the URL structure
+                      Example : file path /@team/members would be accessible at /members
+
+                  export default function Layout(props: {
+                      children: React.ReactNode
+                      [namedSlot]: React.ReactNode
+                    }) {
+                      return (
+                        <>
+                          {props.children}
+                          {props.namedSlot}
+                        </>
+                      )
+                    }
+  
+
+  Middleware - Is a piece of code that allows you to perform actions before a request is completed and modify the response accordingly
+               It allows you to modify requests and responses, making it easier to enrich headers, implement URL redirects, or keep track of incoming and outgoing requests
+               Use the file middleware.ts (or .js) in the root of your project to define Middleware.
+               Middleware works by intercepting requests and responses before they are passed to the application's core code
+               Middleware can use caching mechanisms to optimize the application's performance
+
+               There are two ways to define which paths Middleware will run on:
+                  1.Custom matcher config
+                      matcher allows you to filter Middleware to run on specific paths
+                        export const config = {
+                          matcher: '/about/:path*', or ['/about/:path*', '/dashboard/:path*'],
+                        }
+
+                  2.Conditional statements
+                        export function middleware(request: NextRequest) {
+                          if (request.nextUrl.pathname.startsWith('/about')) {
+                            return NextResponse.rewrite(new URL('/about-2', request.url))
+                          }
+                        }
+
+        When should you use middleware?
+              Geolocation - For instance, if you're building a website for a shoe company with branches in different regions, you can display trending shoes or exclusive offers based on the user's location.
+                Next.js middleware provides access to geographic information through the NextRequest API's geo key
+
+              Security - Using the cookies key available in the NextRequest API, you can set cookies and authenticate users on your site
+
+              A/B Testing - A/B testing with middleware involves using cookies to assign users to specific buckets, and servers then redirect users to either the A or B version based on their assigned bucket
+
+
+
+
+Different types of Data Fetching in NextJS ?
+  Client-side rendering (CSR) - The standard data fetching performed with the useEffect hook in React. Next.js has a dedicated React hook library called useSWR hook for client-side data fetching.
+
+  Server-side rendering (SSR) - The data fetching that occurs on the server-side before loading a page. Server-side data fetching is accomplished by exporting getServerSideProps() function from a page.
+
+  Static Site Generation (SSG) - The data fetching that occurs on the server side at the build time of a page. It is accomplished by exporting getStaticProps() function from a page.
+
+  Incremental Static Regeneration (ISR) -  Allows you to create or update static pages after you've built your site. SR can be accomplished by adding the revalidate prop to the getStaticProps() function.
+
+
+
+Project Organization and File Colocation in NextJS Project :
+
+        Each folder represents a route segment that is mapped to a corresponding segment in a URL path
+        A route is not publicly accessible until a page.js or route.js file is added to a route segment
+        when a route is made publicly accessible, only the content returned by page.js or route.js is sent to the client
+        Project files can be safely colocated inside route segments in the app directory without accidentally being routable
+
+        Next.js provides several features to help you organize your project : 
+              1. Private folders - Private folders can be created by prefixing a folder with an underscore: _folderName
+                                  This indicates the folder is a private implementation detail and should not be considered by the routing system, thereby opting the folder and all its subfolders out of routing.
+                                  They can useful for : 
+                                        A. Separating UI logic from routing logic
+                                        B. Consistently organizing internal files
+                                        C. Avoiding potential naming conflicts with future Next.js file conventions
+
+
+              2. Route Groups - Route groups can be created by wrapping a folder in parenthesis: (folderName)
+                              This indicates the folder is for organizational purposes and should not be included in the route's URL path
+                              They can useful for : 
+                                        A. Organizing routes into groups e.g. by site section, intent, or team
+                                        B. Enabling nested layouts in the same route segment level
+
+
+              3. src Directory - Next.js supports storing application code (including app) inside an optional src directory. This separates application code from project configuration files which mostly live in the root of a project.
+
+
+              4. Module Path Aliases - Next.js supports Module Path Aliases which make it easier to read and maintain imports across deeply nested project files.
+                                  // before
+                                  import { Button } from '../../../components/button'
+                                  
+                                  // after
+                                  import { Button } from '@/components/button'
+
+
+      Project organization strategies : There is no "right" or "wrong" way to organize your own files and folders.
+
+        * Store project files outside of app - This strategy stores all application code in shared folders in the root of your project and keeps the app directory purely for routing purposes.
+              Keep folders such as components, lib etc outside app directory
+
+        * Store project files in top-level folders inside of app - This strategy stores all application code in shared folders in the root of the app directory.
+              Keep folders such as components, lib etc in the root of app directory
+
+        * Split project files by feature or route - This strategy stores globally shared application code in the root app directory and splits more specific application code into the route segments that use them
+              Keep folders such as components, lib etc in the root of app directory which contains global components and 
+              keep route specific components folders such as components, lib etc inside route segments 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Data Fetching
+
+
+    Fetching - There are four ways you can fetch data :
+              1.  On the server, with fetch
+              2.  On the server, with third-party libraries
+              3.  On the client, via a Route Handler
+              4.  On the client, with third-party libraries.
+
+        1. Fetching Data on the Server with fetch
+                Next.js extends the native fetch Web API to allow you to configure the caching and revalidating behavior for each fetch request on the server
+                React extends fetch to automatically memoize fetch requests while rendering a React component tree
+                You can use fetch with async/await in Server Components, in Route Handlers, and in Server Actions.
+                    
+                    async function getData() {
+                        const res = await fetch('https://api.example.com/...')
+                        // The return value is *not* serialized
+                        // You can return Date, Map, Set, etc.
+                      
+                        if (!res.ok) {
+                          // This will activate the closest `error.js` Error Boundary
+                          throw new Error('Failed to fetch data')
+                        }
+                      
+                        return res.json()
+                      }
+                      
+                      export default async function Page() {
+                        const data = await getData()
+                      
+                        return <main></main>
+                      }
+
+
+            Caching Data
+                By default, Next.js automatically caches the returned values of fetch in the Data Cache on the server. This means that the data can be fetched at build time or request time, cached, and reused on each data request.
+                fetch requests that use the POST method are also automatically cached. Unless it's inside a Route Handler that uses the POST method, then it will not be cached.
+
+                    // 'force-cache' is the default, and can be omitted
+                    fetch('https://...', { cache: 'force-cache' })
+
+              fetch requests are not cached in below cases :
+                  The cache: 'no-store' is added to fetch requests.
+                  The revalidate: 0 option is added to individual fetch requests.
+                  The fetch request is inside a Router Handler that uses the POST method.
+                  The fetch request comes after the usage of headers or cookies.
+                  The const dynamic = 'force-dynamic' route segment option is used.
+                  The fetchCache route segment option is configured to skip cache by default.
+                  The fetch request uses Authorization or Cookie headers and there's an uncached request above it in the component tree.
+
+
+            Revalidating Data
+                Revalidation is the process of removing the Data Cache and re-fetching the latest data.
+                Cached data can be revalidated in two ways:
+                      1. Time-based revalidation: Automatically revalidate data after a certain amount of time has passed
+                          To revalidate data at a timed interval, you can use the next.revalidate option of fetch to set the cache lifetime of a resource (in seconds)
+                          fetch('https://...', { next: { revalidate: 3600 } })
+
+
+                      2. On-demand revalidation: Manually revalidate data based on an event
+                          Data can be revalidated on-demand by path (revalidatePath) or by cache tag (revalidateTag) inside a Route Handler or a Server Action
+                              A. When using fetch, you have the option to tag cache entries with one or more tags.
+                                  export default async function Page() {
+                                    const res = await fetch('https://...', { next: { tags: ['collection'] } })
+                                    const data = await res.json()
+                                    // ...
+                                  }
+                              B. Then, you can call revalidateTag to revalidate all entries associated with that tag.
+                                  import { NextRequest } from 'next/server'
+                                  import { revalidateTag } from 'next/cache'
+                                  
+                                  // e.g a webhook to `your-website.com/api/revalidate?tag=collection`
+                                  export async function POST(request: NextRequest) {
+                                    const tag = request.nextUrl.searchParams.get('tag')
+                                  
+                                    if (!tag) {
+                                      return Response.json({ message: 'Missing tag param' }, { status: 400 })
+                                    }
+                                  
+                                    revalidateTag(tag)
+                                  
+                                    return Response.json({ revalidated: true, now: Date.now() })
+                                  }
+
+
+
+        2. Fetching data on the Server with third-party libraries
+              In cases where you're using a third-party library that doesn't support or expose fetch, you can configure the caching and revalidating behavior of those requests using the Route Segment Config Option and React's cache function.
+                    
+                    import { cache } from 'react' // The React cache function is used to memoize data requests.
+
+                    export const dynamic = 'auto'
+                    export const revalidate = false
+                    export const fetchCache = 'auto'
+
+                    export const getItem = cache(async (id: string) => {
+                      const item = await db.item.findUnique({ id })
+                      return item
+                    })
+
+
+        3. Fetching Data on the Client with Route Handlers
+              If you need to fetch data in a client component, you can call a Route Handler from the client
+              Route Handlers execute on the server and return the data to the client
+              This is useful when you don't want to expose sensitive information to the client, such as API tokens.
+
+        
+        4. Fetching Data on the Client with third-party libraries
+              You can also fetch data on the client using a third-party library such as SWR or React Query
+
+
+
+    Fetching Patterns - Whenever possible, we recommend fetching data on the server.
+        Fetch data and render in the same environment.
+        Perform multiple data fetches with single round-trip instead of multiple individual requests on the client
+        Reduce client-server waterfalls.Reduces both the back-and-forth communication between client and server
+        Use fetch or React cache in the component that needs the data without worrying about making multiple requests for the same data.
+        Avoid fetching data globally & forward props between components.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Rendering
+
+      React and Next.js allow you to create hybrid web applications where parts of your code can be rendered on the server or the client.
+      3 foundation web concepts :
+          Rending Environments : There are two environments where web applications can be rendered
+              - The client refers to the browser on a user's device that sends a request to a server for your application code. It then turns the response from the server into a user interface.
+              - The server refers to the computer in a data center that stores your application code, receives requests from a client, and sends back an appropriate response.
+
+          Request-Response Lifecycle : All websites follow the same Request-Response Lifecycle
+              - User Action: like clicking a link, submitting a form, or typing a URL directly into the browser's address bar.
+              - HTTP Request: The client sends an HTTP request to the server
+              - Server: The server processes the request and responds with the appropriate resources
+              - HTTP Response: After processing the request, the server sends an HTTP response back to the client
+              - Client: The client parses the resources to render the user interface
+
+          Network Boundary : the Network Boundary is a conceptual line that separates the different environments
+              In React, the work is split into two parts: the client module graph and the server module graph
+              - client module graph :  contains all components that are rendered on the client.
+                  * You can use the React "use client" convention to define the boundary
+              - server module graph :  contains all components that are rendered on the server.
+                  * There's also a "use server" convention, which tells React to do some computational work on the server
+
+
+
+      React Server Components
+          Allow you to write UI that can be rendered and optionally cached on the server.
+          By default, Next.js uses Server Components.
+          you can opt into using Client Components "use client".
+
+          In Next.js, there are three different server rendering strategies :
+                1. Static Rendering (default)
+                2. Dynamic Rendering
+                3. Streaming
+
+          Benefits : 
+                1. Data fetching - data fetching is faster as it happens on the server & close to datasource. Reducing HTTP calls & improve performance
+                2. Security -  Keep sensitive data & logic on the server
+                3. Caching - Rendered HTML content/Data can be cached optionally on the server
+                4. Bundle size - Reduce size of the bundle as more components are getting build & rendered on the server.
+                5. Initial page load & First contenful paint - Generated HTML sent to client takes less time to paint content on the screen
+                6. SEO - The rendered HTML can be used by search engine bots to index your pages
+                7. Streaming - Allow you to split the rendering work into chunks and stream them to the client as they become ready
+
+
+          1. Static Rendering 
+                With Static Rendering, routes are rendered at build time
+                The result is cached and can be pushed to a Content Delivery Network (CDN)
+                Static rendering is useful when a route has data that is not personalized to the user and can be known at build time
+
+          2. Dynamic Rendering
+                With Dynamic Rendering, routes are rendered for each user at request time
+                Dynamic rendering is useful when a route has data that is personalized to the user or has information that can only be known at request time.
+                Dynamic functions and data caching affect whether a route is statically or dynamically rendered.
+
+                    Dynamic functions - Rely on information that can be only known at request time such as a user's cookies, current requests headers, or the URL's search params.
+                    In Next.js, these are the dynamic functions which automatically opt the whole route into dynamic rendering
+                          - cookies()
+                          - headers()
+                          - useSearchParams()
+                          - searchParams
+
+                As a developer, you do not need to choose between static and dynamic rendering as Next.js will automatically choose the best rendering strategy for each route based on the features and APIs used.
+                Choose when to cache or revalidate specific data.
+
+          3. Streaming
+                Enables you to progressively render UI from the server.
+                Work is split into chunks and streamed to the client as it becomes ready
+                This allows the user to see parts of the page immediately, before the entire content has finished rendering
+
+
+
+      Client Components 
+          Allows you to write interactive UI that can be rendered on the client at request time  
+          Client rendering is opt-in, meaning you have to explicitly decide what components React should render on the client
+
+           Benefits : 
+                1. Interactive - Client Components can use state, effects, and event listeners, meaning they can provide immediate feedback to the user and update the UI
+                2. Browser APIs - Client Components have access to browser APIs
+
+          
+          How to use Client components in NextJS ?
+              To use Client Components, you can add the React "use client" directive at the top of a file, above your imports.
+              "use client" is used to declare a boundary between a Server and Client Component modules
+              By defining a "use client" in a file, all other modules imported into it, including child components, are considered part of the client bundle.
+
+          In Next.js, there are two different client rendering strategies :
+
+              1. Full Page Load
+                  Next.js will use React's APIs to render a static HTML preview on the server for both Client and Server Components.
+                  This means, when the user first visits your application, they will see the content of the page immediately, without having to wait for the client to download, parse, and execute the Client Component JavaScript bundle.
+
+              2. Subsequent Navigations
+                  Client Components are rendered entirely on the client, without the server-rendered HTML
+                  This means the Client Component JavaScript bundle is downloaded and parsed. Once the bundle is ready, React will use the RSC Payload to reconcile the Client and Server Component trees, and update the DOM.
+
+
+      
+      Server and Client Composition Patterns
+
+            When to use Server components ?
+                Fetch data
+                Access backend resources directly
+                Keep sensitive data on the server
+                Reduce client-side JS bundle
+
+            When to use Client components ?
+                Add interactivity and event listeners
+                Use State and Lifecycle Effects
+                Browser APIs
+                Custom hooks
+                React class components
+
+          Server Component Patterns
+                1. Sharing data between components : Instead of passing data as Props, use fetch or React's cache function to fetch the same data in the components that need it, without worrying about making duplicate requests for the same data.
+
+                2. Use 'server-only' package : Keep server-only code out of client environment. It will give other developers a build-time error if they ever accidentally import one of these modules into a Client Component
+
+
+          Client Component Patterns
+                1. Moving Client Components Down the Tree : To reduce the Client JavaScript bundle size. Ex : Instead of making the whole layout a Client Component, move the interactive logic to a Client Component (e.g. <SearchBar />) and keep your layout as a Server Component.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Caching
+    Next.js improves your application's performance and reduces costs by caching rendering work and data requests
+    routes are statically rendered and data requests are cached unless you opt out
+    Different caching mechanisms :
+        
+      1. Request memoization - React extends the fetch API to automatically memoize requests that have the same URL and options.
+      This means you can call a fetch function for the same data in multiple places in a React component tree while only executing it once.
+      2. Data Cache - Next.js has a built-in Data Cache that persists the result of data fetches across incoming server requests and deployments. By default, data requests that use fetch are cached.
+      3. Full Route Cache - Next.js automatically renders and caches routes at build time. This is an optimization that allows you to serve the cached route instead of rendering on the server for every request, resulting in faster page loads
+      4. Router cache - Next.js has an in-memory client-side cache that stores the React Server Component Payload, split by individual route segments, for the duration of a user session
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Optimization
+    Next.js comes with a variety of built-in optimizations designed to improve your application's speed
+    Some of the built-in components helps in implementing common UI optimizations :
+
+      1. Image - The Next.js Image component extends the HTML <img> element with features for automatic image optimization
+               - Automatically serve correctly sized images for each device
+               - Prevent layout shift when images are loading
+               - On-demand image resizing & faster page load
+               - Lazy load images
+
+      2. Font - next/font will automatically optimize your fonts (including custom fonts) and remove external network requests for improved privacy and performance
+              - Downloads font files at build time and hosts them with your other static assets
+              - Includes built-in automatic self-hosting for any font file
+              - This means you can optimally load web fonts with zero layout shift, thanks to the underlying CSS size-adjust property used
+      
+      3. Script - To load a third-party script for multiple routes, import next/script and include the script directly in your layout component
+                - To load a third-party script for all routes, import next/script and include the script directly in your root layout
+                - Next.js will ensure the script will only load once, even if a user navigates between multiple routes in the same layout
+
+      4. Link - Built on the native <a> tags. The Link Component prefetches pages in the background, for faster and smoother page transitions.
+
+
+      Static Assets : Next.js can serve static files, like images, under a folder called public in the root directory
+                      Files inside public can then be referenced by your code starting from the base URL (/)
+
+
+      Lazy loading : Allows you to defer loading of Client Components and imported libraries, and only include them in the client bundle when they're needed. 
+                    Improve the initial loading performance of an application by decreasing the amount of JavaScript needed to render a route.
+                    There are two ways you can implement lazy loading in Next.js :
+                    1. Using Dynamic Imports with next/dynamic. next/dynamic is a composite of React.lazy() and Suspense
+                          
+                        Ex:  import dynamic from 'next/dynamic'
+                             const ComponentA = dynamic(() => import('../components/A'))
+
+                    2. Using React.lazy() with Suspense
+
+
+      Third Party Libraries : @next/third-parties is a library that provides a collection of components and utilities that improve the performance and developer experience of loading popular third-party libraries in your Next.js application
+                 Ex :  import { GoogleTagManager,sendGTMEvent, GoogleMapsEmbed, YouTubeEmbed } from '@next/third-parties/google'
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Styling
+    Next.js supports different ways of styling your application, including :
+        - Global CSS :  Simple to use and familiar for those experienced with traditional global CSS pattern
+        - CSS modules : Create locally scoped CSS classes to avoid naming conflicts and improve maintainability
+        - Tailwind CSS :  A utility-first CSS framework that allows for rapid custom designs by composing utility classes
+        - Sass : A popular CSS preprocessor that extends CSS
+        - CSS-in-JS : Embed CSS directly in your JavaScript components
+
+
+    CSS Modules : Next.js has built-in support for CSS Modules using the .module.css extension
+                  CSS Modules locally scope CSS by automatically creating a unique class name
+                  Ex : import styles from './styles.module.css'
+
+    Global Styles : Global styles can be imported into any layout, page, or component inside the app directory.
+                  Ex : import './global.css'
+
+    External Stylesheets : Stylesheets published by external packages can be imported anywhere in the app directory
+                  Ex : import 'bootstrap/dist/css/bootstrap.css'
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Why use Create Next App?
+      Allows you to create a new Next.js app within seconds
+      Launches an interactive experience that guides you through setting up a project
+      Create Next App has zero dependencies
+      Create Next App will automatically detect if you're offline and bootstrap your project using your local package cache
+      Well tested
+      Support for examples

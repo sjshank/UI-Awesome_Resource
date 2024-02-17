@@ -1,0 +1,592 @@
+What is Object in JavaScript?
+     objects in JavaScript may be defined as an unordered collection of related data, of primitive or reference types, 
+     in the form of “key: value” pairs. These keys can be variables or functions and are called properties and methods,
+      respectively, in the context of an object.
+
+
+what is Prototype in js ?
+    Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+
+Procedural Programming
+    It divides a program into number of sets of functions. They call each other to execute logic. As application grows, it becomes
+    difficult to manage this many functions and changes in any function may breaks application.
+    You may end up writing functions with too many paramters
+
+Object Orient Programming ?
+    Define group of properties, functions into a unit call as Object. Functions in OOP will have fewer and fewer params.
+    Encapsulation - Used to hide data. Reduce complexity + increase reusability 
+    Abstraction - Provides simpler interface, reduce impact of change, hide implementation
+    Inheritance - Used to eliminate redundant code
+    Polymorphonism - allow us to override implementation at different places. one name many behavior.
+
+Functional Programming
+
+    JavaScript supports functional programming because JavaScript functions are first
+    class citizens. This means that functions can do the same things that variables can do.
+    A function is considered a first-class member when it can be declared as a
+    variable and sent to functions as an argument. These functions can even be returned
+    from functions.
+    The core concepts of functional programming: immutability, purity, data transformation, higher-order
+    functions, and recursion.
+
+    Higher order functions
+        Higher-order functions are functions that can manipulate other functions. They can
+        take functions in as arguments, or return functions, or both.
+        The first category of higher-order functions are functions that expect other functions
+        as arguments- Array.map,Array.filter, and Array.reduce
+
+
+When we use 'new' operator on constructor function, below 3 things happen 
+    1. create an empty Object
+    2. point 'this' to that Object
+    3. return the object from constructor function
+
+* In Js, functions are objects. constructor property in every object points to a function/object from which object/function
+ is created.
+
+* Primitive types are copied by value, Reference types are copied by reference.
+
+* Prototype is a property which points to parent object. __proto__ is the actual parent/Prototype object.
+
+* Object.getPrototyprOf(objectName) returns all the properties of parent object.
+
+* Avoid creating Inheritance hierarchies. Use Inheritance if it very necessary to do. Make use of composition.
+* Inheritance doesn't provide you much reusability as compared to composition.
+* Try to keep Inheritance hierarchy upto 1 level otherwise leads to a complex hierarchy structure.
+* composition - Create different objects with different features and compose/utilize them as per need.
+
+* Best functions are those with no paramters.
+
+
+Closure
+    A closure is the combination of a function and the lexical environment within which that function was declared.
+    Helpful in following condition ---
+        encapsulation
+        memoization
+        reusabliity
+
+Reactive Programming in Javascript
+
+    Reactive Programming in Javascript is like a sequence of events that occur in time. It is an Asynchronous Programming concept around data streams. Reactive programming is a programming paradigm for writing code, mainly concerned with asynchronous data streams. It is a programming of event streams that happens in time.
+
+    Reactive Programming allows you to set Dynamic Behaviour only at Declaration Time.
+    Reactive Programming is different from Imperative programming because as the name suggests it reacts when something in our application is occurring or done.
+    It relies on Asynchronous Nature that happens in time.
+    It stays responsive in the case of Failure and Success.
+    In the Reactive world, we can not wait on something happen to the program, we need to continue the execution, and if something happens, we need to React to it. That is what the Async Pattern is.
+
+Best Practices for Speeding Up Your Web Site
+    Minimize HTTP Requests
+    Use a Content Delivery Network (CDN)
+    Make JavaScript and CSS External
+    Minify JavaScript and CSS
+    Put Stylesheets at the Top - helps in progressive rendering
+    Put Scripts at the Bottom
+    Make Ajax Cacheable
+    Minimize DOM Access
+    remove console statements
+    Make use of inbuilt functions avoid redundant code
+    Implement lazy loading of files/components
+    Reduce cookie size
+    Make sure app doesn't have any 404 error
+    Build granular and modular resuable components as much as possible
+    Reduce number of global App events
+
+
+Building blocks of HTML5
+    Semantic html markups
+    video & audio tags
+    new form elements
+    data storage api
+    intersection observable api
+    web worker api
+    canvas & svg api
+    geo location api
+    content visibility api
+    page visibility api
+
+
+Framework and Library?
+    You tell libraries what to do, frameworks tell you what to do.
+
+    Framework ----> Decreased Performance (sort of), Small applications don’t need it.
+    libraries ----> Single focus, You’re in control
+
+
+Memoization in JavaScript
+
+    Memoization is an optimization technique that speeds up applications by storing the results of expensive function calls and returning the cached result when the same inputs are supplied again.
+    The concept of memoization in JavaScript is built majorly on two concepts. They are:
+        Closures
+        Higher Order Functions(returning functions from functions)
+
+
+Page visibility api
+    The visibility API allows a developer to know when a page has lost or gained focus. The API sends a visibilitychange event of the visibility of the page.
+
+What is RequireJs?
+    RequireJs is a open source JavaScript library which is used to maintain dependencies between JavaScript files and modular programming.
+
+
+Global namespace pollution
+    Polluting Global namespace causes name collision. This name collision is very common in large projects where we may be using several javascript libraries.
+
+
+Event bubble and capture in JS.
+    Bubble - Event gets propogated in upward direction. Innermost (function will get trigger first) to outermost(function will get trigger last)
+
+    Capture - Event gets propogated in downward direction. Outermost (function will get trigger first) to innermost(function will get trigger last)
+
+
+JavaScript performance problems
+    Too many interactions with the DOM
+    Too many dependencies
+    Inefficient iterations
+    Poor event handling
+    Unorganized code
+    Use of eval
+    Unnecessary Variables
+
+
+Hoisting in JavaScript
+    Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
+
+
+Var - execution context level scope then it can be function or global
+Let - the variable's scope is bound to the block in which it is declared and not the function
+
+Order of precedence in variable & function Hoisting
+    1. Function declarations take precedence over variable declarations
+    2. Variable assignment takes precedence over function declaration
+
+
+Why is array = [] faster than arr = new Array?
+    Because it’s slower - it has to call the array constructor. The array literal notation is faster and also easier to read.
+
+
+Function overloading in JavaScript
+    JavaScript does not support function overloading natively. If we will add functions with the same name and different arguments, it considers the last defined function.
+
+
+Web worker in javascript
+    Web workers is an asynchronous system, or protocol, for web pages to execute tasks in the background, independently from the main thread and website UI. It is an isolated environment that is insulated from the window object, the document object, direct internet access and is best suited for long-running or demanding computational tasks.
+
+
+constructor property in JavaScript
+    The constructor property returns a reference to the Object constructor function that created the instance object.
+    All objects (with the exception of objects created with Object.create(null)) will have a constructor property. Objects created without the explicit use of a constructor function (such as object- and array-literals) will have a constructor property that points to the Fundamental Object constructor type for that object.
+
+    function Person(){
+    }
+    Person.constructor;
+        ƒ Function() { [native code] }
+    var a = new Person();
+        ƒ Person(){}
+    a.constructor.constructor
+        ƒ Function() { [native code] }
+
+    var b = new Array(2)
+        ƒ Array() { [native code] }
+
+    var o = {}/new Object(null)/ new Object();
+        o.constructor
+            ƒ Object() { [native code] }
+
+
+what is Object.create() ?
+    The Object.create() method creates a new object, using an existing object as the prototype of the newly created object.
+    Input parameter - object and propertiesobject   
+        const person = {
+            isHuman: false,
+            printIntroduction: function () {
+                console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+            }
+            };
+            const me = Object.create(person);
+
+
+Array methods ?
+    foreach
+    find
+    map
+    filter
+    some
+    every
+    reduce
+
+
+HTML blocks 
+    Every HTML element has a default display value depending on what type of element it is.
+    The two display values are: block and inline.
+
+    Block-level Elements
+        A block-level element always starts on a new line and takes up the full width available
+    Inline-level Elements
+        An inline element does not start on a new line and only takes up as much width as necessary.
+
+
+What are Semantic Elements?
+    Semantic elements = elements with a meaning.
+    A semantic element clearly describes its meaning to both the browser and the developer.
+
+    Examples of non-semantic elements: <div> and <span> - Tells nothing about its content.
+
+    Examples of semantic elements: <form>, <table>, <article>, <header>, <footer> - Clearly defines its content.
+
+
+What is HTML Canvas?
+    The HTML <canvas> element is used to draw graphics, on the fly, via JavaScript.
+
+    The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+
+
+CSS box model ?
+    All HTML elements can be considered as boxes.
+    It consists of: margins, borders, padding, and the actual content.
+
+
+CSS Outline
+    An outline is a line that is drawn around elements, OUTSIDE the borders, to make the element "stand out".
+
+
+CSS Precedence Rules
+    !important after CSS properties.
+    Specificity of CSS rule selectors.
+    Sequence of declaration
+
+CSS Selector Specificity
+    style
+    id
+    class
+    attribute
+    element
+    Psuedo class/elements
+    inherited styles
+    *
+
+
+The position Property
+    static
+    relative
+    absolute
+    fixed
+    sticky
+
+    Static - HTML elements are positioned static by default. An element with position: static; is not positioned in any special way; it is always positioned according to the normal flow of the page. Not affected by any left, right, top, bottom properties
+
+    Relative - An element with position: relative; is positioned relative to its normal position. Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position. 
+
+    Fixed - An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element.
+
+    Absolute - An element with position: absolute; is positioned relative to the nearest positioned ancestor
+    
+    Sticky - An element with position: sticky; is positioned based on the user's scroll position.
+
+
+Float in CSS
+    The CSS float property specifies how an element should float.
+    The float property is used for positioning and formatting content e.g. let an image float left to the text in a container.
+
+
+CSS Variables
+    The var() function can be used to insert the value of a custom property.
+    Example ---
+        :root {
+            --main-bg-color: coral;
+        }
+
+        #div {
+            background-color: var(--main-bg-color);
+        }
+    
+
+CSS Flex layout
+    Makes it easier to design flexible responsive layout structure without using float or positioning.
+        display: Flex;
+        flex-direction: row/column
+
+
+
+What is The Viewport?
+    The viewport is the user's visible area of a web page.
+    The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen.
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        A <meta> viewport element gives the browser instructions on how to control the page's dimensions and scaling.
+
+        The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
+
+        The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser.
+
+
+Always Design for Mobile First
+    Mobile First means designing for mobile before designing for desktop or any other device (This will make the page display faster on smaller devices).
+
+    This means that we must make some changes in our CSS.
+
+    Instead of changing styles when the width gets smaller than 768px, we should change the design when the width gets larger than 768px.
+
+
+Native vs Host Objects
+    Native - Math, Date, Object, parseInt, eval
+    Host - Window, location, document, history, setTimeout
+
+
+What is Currying?
+    Currying is a process in functional programming in which we can transform a function with multiple arguments into a sequence of nesting functions. It returns a new function that expects the next argument inline.
+    multiply(1,2,3) function call to multiply(1)(2)(3)
+
+Arrow Function
+ Arrow functions make our code more concise, and simplify function scoping and the this keyword. They are one-line mini functions which work much like Lambdas
+
+
+Spread operator ?
+     The spread operator is extremely useful for cloning arrays and objects.
+     Different ways to use Spread operator:
+        copy array/objects
+        merge arrays
+        pass arguments
+        convert string into array of characters
+        eliminate duplicate array
+
+
+Differences between cookies and localStorage
+    Cookies and local storage serve different purposes. 
+    Cookies are mainly for reading server-side, whereas local storage can only be read by the client-side. 
+    Apart from saving data, a big technical difference is the size of data you can store, and 
+    as I mentioned earlier localStorage gives you more to work with
+
+
+* Attributes are refering to additional information of an object. 
+* Properties are describing the characteristics of an object
+
+
+Async vs Defer
+With async, the file gets downloaded asynchronously and then executed as soon as it’s downloaded.
+
+With defer, the file gets downloaded asynchronously, but executed only when the document parsing is completed.
+
+
+Visibility:Hidden; – It is not visible but gets up it’s original space.
+
+Display:None; – It is hidden and takes no space.
+
+
+Pure Function ? 
+    We refer to functions that don’t affect anything in the outside scope as pure functions. 
+    As long as a function only takes primitive values as parameters and doesn’t use any variables in its surrounding scope, it is automatically pure, as it can’t affect anything in the outside scope. 
+    All variables created inside are garbage-collected as soon as the function returns.
+
+
+* Scope refers to the visibility of variables.
+* Context refers to the value of 'this' in the same scope. 
+* The set of nested scopes forming a scope ladder is called Scope Chain.
+* The process of checking for a variable through the scope chain in ascending order is called Variable lookup
+
+Object() constructor
+    - turns input into object
+    - value is null or undefined - creates & returns into empty object
+    - value is an object already - returns the value
+
+    new Object()
+    new Object(value)
+
+    Object()
+    Object(value)
+
+    - Object() can be called with or without new
+
+
+Object.assign()
+    - static method
+    - copies all enumerable and own properties from sourec to target
+    - returns modified target object
+    - It copies property values. Doesn't support deep clone
+    - Uses [[Get]] on the source and [[Set]] on the target. Doesn't define new properties
+    - Target should not be null or undefined datatype
+
+Object.create()
+    - static method
+    - creates new object using existing object
+    - assign existing object as prototype object to newly created object
+    - we can achieve single-level classical inheritance
+
+Object.entries()
+    - static method
+    - returns array of object's own & enumerable properties key-value both
+    - we can run on primitive datatypes also. only String, number & boolean supported. No Null/Undefined support
+
+Object.freeze()
+    - static method
+    - freezes an object. Makes object immutable
+    - non-writable, non-enumerable & non-configurable
+    - new properties cannot be added
+    - prototype cannot be re-assigned
+    - returns same object
+    - it only applies to immediate properties of object. Not nested object properties. 
+
+Object.seal()
+    - static method
+    - seals an object
+    - writable, non-enumerable, non-configurable
+    - can update object properties 
+    - new properties cannot be added
+    - prototype cannot be re-assigned
+
+Object.groupBy()
+    - static method
+    - groups the elements of a given iterable array
+    - require a callback as second param for groupBy logic
+    - it doesn’t change object reference. No deep clone
+
+    const inventory = [
+    { name: "asparagus", type: "vegetables", quantity: 5 },
+    { name: "bananas", type: "fruit", quantity: 0 },
+    { name: "goat", type: "meat", quantity: 23 },
+    { name: "cherries", type: "fruit", quantity: 5 },
+    { name: "fish", type: "meat", quantity: 22 },
+    ];
+
+    const result = Object.groupBy(inventory, ({ type }) => type);
+
+    /* Result is:
+    {
+    vegetables: [
+        { name: 'asparagus', type: 'vegetables', quantity: 5 },
+    ],
+    fruit: [
+        { name: "bananas", type: "fruit", quantity: 0 },
+        { name: "cherries", type: "fruit", quantity: 5 }
+    ],
+    meat: [
+        { name: "goat", type: "meat", quantity: 23 },
+        { name: "fish", type: "meat", quantity: 22 }
+    ]
+    }
+    */
+
+
+Object.is() static method determines whether two values are the same value
+
+// Case 1: Evaluation result is the same as using ===
+Object.is(25, 25); // true
+Object.is("foo", "foo"); // true
+Object.is("foo", "bar"); // false
+Object.is(null, null); // true
+Object.is(undefined, undefined); // true
+Object.is(window, window); // true
+Object.is([], []); // false
+const foo = { a: 1 };
+const bar = { a: 1 };
+const sameFoo = foo;
+Object.is(foo, foo); // true
+Object.is(foo, bar); // false
+Object.is(foo, sameFoo); // true
+
+// Case 2: Signed zero
+Object.is(0, -0); // false
+Object.is(+0, -0); // false
+Object.is(-0, -0); // true
+
+// Case 3: NaN
+Object.is(NaN, 0 / 0); // true
+Object.is(NaN, Number.NaN); // true
+
+
+Arrow functions 
+    - simple & short way of defining functions
+    - Not require function keyword to define arrow functions
+    - return keyword can be opt-out for one liner code
+    - 'argument' paramter doesn't exists
+    - it doesn't create it's own 'this' binding
+    - 'this' points to immediate parent object
+    - we cannot use 'new' keyword to create object instance
+    - cannot be used as constructors
+    - function can not be declared
+    - cannot be accessed before initialization. doesn’t support Hoisting
+    - cannot have a paramters with same name
+
+
+
+Hoisting and Temporal dead zone
+    All data values declared/defined using var, let, const, and the functions are hoisted in javascript.
+    During variable hoisting, the variable declared with var is assigned undefined value. However, those declared with const and let are not assigned anything. This is called as Temporal dead zone.
+
+    console.log(variable1); // Works with value undefined
+    console.log(variable2); // Uncaught ReferenceError: Cannot access variable before initialization
+    console.log(constant1); // Uncaught ReferenceError: Cannot access variable before initialization
+
+    var variable1 = "Hoisting Demo";
+    let variable2 = "Hoisting";
+    const constant1 = "Hoisting Demo";
+
+
+Lexical environment 
+    Execution context creates a new lexical environment for every function or block
+    It is a data structure whic stores all variables & function declarations
+    It mainly has 2 components : An environment record and reference to outer environment
+    environment record - Object that stores variables/functions in the current lexical environment
+    reference to outer environment - Pointer to the parent lexical environment allowing to access variables/functions of parent scope
+    Lexical environments give you a way to determine what variables and functions are accessible as well as their scopes within your programs
+
+
+Status Code :
+    10*  - Information
+    20* - Success
+    30* - Modify/Redirection
+    40* - Client Error
+    50* - Server Error
+
+
+Session vs JWT based authentication 
+    Session - stores unique session id inside storage. For every request, server verifies id sent by client against stored one & authenticate user.
+    JWT - no session id or token stored inside storage. For every request, server verifies token using secret key & authenticate user.
+
+NPM vs YARN 
+    NPM : Loads dependency subsequently, performance is less
+    YARN : Loads dependencies parallelly, performance is good
+
+
+WebSockets : Stateful, bidirectional protocol to communicate between 2 system. Lightweight.
+HTTP : Stateless, unidirectional protocol to communicate between 2 system.
+
+OWASP : Open web application security principles
+    - SQL injection
+    - CSP, CORS, XSS-Protection, Deny cross domain i-Frame
+    - Broken authentication & access control
+    - Implement proper logging & monitoring system
+    - Validation & Sanitization
+    - Remove deprecated apis & vulnerabilities
+
+SEO : Search Engine Optimization
+    - Improve page performance, use code-splitting, lazy loading, image loading
+    - Use SSR and SSG, set metadata statically & dynamically
+    - Semantic html elements
+    - Define robot.txt & sitemap.xml files for the project : Useful to guide SEO crawlers
+    - focus on core web-vitals, use CDN, service worker to load assets fast
+
+SEO Crawler : GoogleBot
+    - Maintains crawler queue : contains all the URL/pages that needs to be crawl & index
+    - When crawler is idle : pick URL , make a HTTP request & fetch HTML
+    - Parse HTML & find if JS script exists : if yes, add URL to render queue
+    - Renderer fetches & excutes JS to render page
+    - Process html, extract all <a> tags add them back to crawl queue
+    - the content then added to Google's index
+
+
+PWA
+    PWA, or Progressive Web Application is an application written in a web language (JavaScript + frameworks), which works as a native mobile or desktop application. Namely, it displays notifications, works offline as well as in the background, and can use native features such as a camera, geolocation or gesture navigation. At the same time, in contrast with an app, you don’t have to download it.
+
+
+Preload vs Prefetch vs Preconnect :
+    - Preload resources you have high-confidence will be used in the current page.
+    - Preload is an early fetch instruction to the browser to request a resource needed for a page (key scripts, Web Fonts, hero images)
+    - Preload has highest priority. It doesn't block window onload event
+    - Prefetch resources likely to be used for future navigations across multiple navigation boundaries
+    - Prefetch focuses on fetching a resource for the next navigation
+    - Prefetch has lowset priority & fetch resources in background during idle time
+
+    <link rel="preload" href="" as="font" crossorigin /> critical resources are fetched for current navigation
+    <link rel="prefetch" href="" /> // prefetch resource & store in browser cache. It does not render resource in background until user visit next page
+    <link rel="dns-prefetch" href="" /> // prefetch DNS lookup
+    <link rel="prerender" href="" /> // same as prefetch resource but render resource in the background including all document assets
+    <link rel="preconnect" href="cdn url" crossorigin/> // allows the browser to setup early connections with server including DNS lookup, TCP handshakes 
